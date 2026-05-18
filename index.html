@@ -1,23 +1,921 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트랙스 크로스오버 유지비, 자동차 리스/장기렌트 비교 견적 - 최적의 선택을 위한 전문 가이드</title>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "쉐보레 트랙스 크로스오버",
+        "description": "트랙스 크로스오버의 유지비, 자동차 리스 및 장기렌트카에 대한 종합적인 비교 견적 정보를 제공합니다. 2026년 최신 데이터 기반으로 가장 합리적인 선택을 도와드립니다.",
+        "brand": {
+            "@type": "Brand",
+            "name": "Chevrolet"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "트랙스 크로스오버 장기렌트",
+                "description": "최저가 장기렌트 견적 비교, 월 납입금, 초기비용, 할인 혜택 정보",
+                "category": "CarRental",
+                "priceCurrency": "KRW",
+                "url": "https://example.com/trax-crossover-long-term-rental"
+            },
+            {
+                "@type": "Offer",
+                "name": "트랙스 크로스오버 자동차리스",
+                "description": "맞춤형 자동차리스 견적, 세금 혜택, 월 리스료 정보",
+                "category": "CarLease",
+                "priceCurrency": "KRW",
+                "url": "https://example.com/trax-crossover-car-lease"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "1250"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.google.com/search?q=트랙스+크로스오버+유지비+자동차리스+장기렌트카+{search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "트랙스 크로스오버 최적 구매 가이드",
+        "url": "https://example.com",
+        "description": "쉐보레 트랙스 크로스오버의 유지비, 자동차 리스, 장기렌트카 관련 최신 정보와 전문적인 비교 견적 서비스를 제공합니다.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "자동차 금융 정보 연구소",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://example.com/logo.png"
+            }
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://example.com/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS Styles -->
+    <style>
+        /* Base Styling and Reset */
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; background-color: #f8f9fa; }
+        h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
+        a { text-decoration: none; color: inherit; }
+        ul, ol { list-style: none; padding-left: 0; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Color Palette for Soft, Professional Look */
+        :root {
+            --primary-color: #005A9C; /* Deep Blue */
+            --secondary-color: #00A9CE; /* Sky Blue */
+            --accent-color: #FF7F00; /* Orange Accent */
+            --text-color: #333333;
+            --light-bg: #ffffff;
+            --dark-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+            --subtle-border: #d0d0d0;
+        }
+
+        /* Layout and Typography */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .header { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;}
+        .navbar-brand img { filter: brightness(0) invert(1); } /* Make logo white for dark header */
+        .banner-area-5 { background: linear-gradient(to right, rgba(234, 244, 255, 0.8), rgba(255, 255, 255, 0.8)); padding: 80px 0; }
+        .banner-content h2 { font-size: 3.2rem; font-weight: 900; line-height: 1.3; color: var(--text-color); }
+        .banner-content span.highlight { color: var(--accent-color); font-weight: 900; }
+        .section-title h2 { font-size: 2.8rem; color: var(--primary-color); margin-bottom: 2rem; line-height: 1.2; }
+        .section-title p { font-size: 1.1rem; color: #555; line-height: 1.7; }
+        .feature-area-3 { padding: 80px 0; background-color: var(--light-bg); }
+        .mainFormWrap { background-color: #ffffff; padding: 40px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border: 1px solid #eef2f6;}
+        .mainTextCell { font-size: 2.2rem; color: var(--primary-color); text-align: center; font-weight: 700; margin-bottom: 1.5rem; }
+        .subTextCell { font-size: 1.25rem; text-align: center; color: #444; margin-bottom: 2.5rem; line-height: 1.8;}
+        .inputWrap input, .inputWrap select { border-radius: 10px; border: 1px solid var(--border-color); padding: 1rem 1.2rem; font-size: 1.05rem; width: 100%; box-sizing: border-box; transition: border-color 0.3s ease; }
+        .inputWrap input:focus, .inputWrap select:focus { border-color: var(--secondary-color); outline: none; box-shadow: 0 0 0 2px rgba(0, 169, 206, 0.2); }
+        .btnCompare { background-color: var(--accent-color); color: white; border: none; padding: 1.2rem 2.5rem; border-radius: 10px; font-size: 1.2rem; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; font-weight: 700; }
+        .btnCompare:hover { background-color: #e07000; transform: translateY(-2px); }
+        .about-area-2 { background-color: var(--dark-bg); padding: 80px 0; }
+        .info-card { background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .info-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .info-card h4 { color: var(--primary-color); font-size: 1.7rem; margin-bottom: 1.2rem; }
+        .info-card p { color: #555; font-size: 1rem; line-height: 1.7; }
+        .content-section { padding: 80px 0; background-color: var(--light-bg); border-top: 1px solid var(--subtle-border); }
+        .content-section h2 { border-left: 5px solid var(--secondary-color); padding-left: 1.5rem; margin-bottom: 2.5rem; font-size: 2.3rem; color: var(--primary-color); }
+        .content-section h3 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 1rem; margin-top: 2.5rem; }
+        .content-section h4 { font-size: 1.5rem; color: #444; margin-bottom: 1rem; margin-top: 2rem; }
+        .content-section p { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 1rem;}
+        .content-section table { width: 100%; border-collapse: separate; border-spacing: 0 15px; margin-top: 30px; font-size: 0.98rem; }
+        .content-section th, .content-section td { border: none; padding: 15px; text-align: left; background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        .content-section th { background-color: var(--primary-color); color: white; font-weight: 700; border-radius: 10px 10px 0 0; font-size: 1.1rem; }
+        .content-section td { background-color: var(--light-bg); }
+        .content-section tr:nth-child(even) td { background-color: #fcfcfc; }
+        .content-section .cta-button { text-align: center; margin-top: 50px; }
+        .cta-button a { display: inline-block; background: linear-gradient(to right, var(--secondary-color), var(--primary-color)); color: white; padding: 1.2rem 4rem; border-radius: 35px; font-size: 1.3rem; font-weight: 700; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .cta-button a:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0, 90, 156, 0.3); }
+
+        /* Specific Styling for Form Fields */
+        .inputWrap { margin-bottom: 1.5rem; }
+        .inputWrap label.soundonly { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .inputWrap input[type="text"], .inputWrap input[type="tel"], .inputWrap input[type="email"], .inputWrap select { border-radius: 8px; border: 1px solid #cccccc; padding: 12px 15px; font-size: 1rem; width: 100%; box-sizing: border-box; }
+        .inputWrap select { appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>'); background-repeat: no-repeat; background-position: right 15px top 50%; background-size: 16px auto; padding-right: 40px;}
+        .inputWrap .phoneHeadSelector { width: 100px; margin-right: 10px; flex-shrink: 0; }
+        .inputWrap .phoneInput { flex-grow: 1; }
+        .inputInfoTextCell { font-size: 0.85rem; color: #666; margin-top: 0.5rem; }
+        .inputInfoTextCell.fw-700 { font-weight: 700; }
+        .inputInfoTextCell a { color: var(--secondary-color); text-decoration: underline; }
+        .btnViewPolicy { cursor: pointer; color: var(--secondary-color); font-weight: 500; text-decoration: underline; margin-left: 5px; }
+        .btnViewPolicy:hover { color: var(--primary-color); }
+        .checkMain { margin-right: 8px; transform: scale(1.2); cursor: pointer; }
+        label[for="privacyAgree3"], label[for="privacyAgree2"] { cursor: pointer; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 991px) {
+            .banner-content h2 { font-size: 2.6rem; }
+            .section-title h2 { font-size: 2.2rem; }
+            .mainTextCell { font-size: 1.8rem; }
+            .subTextCell { font-size: 1.1rem; }
+            .btnCompare { font-size: 1.1rem; padding: 1rem 2rem; }
+            .content-section h2 { font-size: 2rem; }
+            .cta-button a { font-size: 1.1rem; padding: 1rem 2.5rem; }
+            .mainFormWrap { padding: 30px; }
+        }
+        @media (max-width: 767px) {
+            .banner-content h2 { font-size: 2.2rem; }
+            .banner-area-5 .col-12.col-lg-8 { text-align: center;}
+            .banner-area-5 .person-img { max-width: 80%; margin-top: 20px;}
+            .section-title h2 { font-size: 2rem; text-align: center;}
+            .section-title p { text-align: center;}
+            .feature-area-3 .section-title {margin-bottom: 2rem;}
+            .mainTextCell { font-size: 1.6rem; }
+            .subTextCell { font-size: 1rem; }
+            .inputWrap input, .inputWrap select { padding: 10px 12px; font-size: 0.95rem; }
+            .btnCompare { font-size: 1rem; padding: 1rem 1.5rem; }
+            .content-section h2 { font-size: 1.8rem; padding-left: 1rem; margin-bottom: 1.5rem;}
+            .cta-button a { font-size: 1.1rem; padding: 1rem 2.5rem; }
+            .content-section table { font-size: 0.85rem; }
+            .content-section th, .content-section td { padding: 10px;}
+            .info-card { padding: 20px; }
+        }
+
+        /* Specific styling for tables used in content */
+        .content-section .table-responsive { overflow-x: auto; }
+        .content-section table.comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; box-shadow: none;}
+        .content-section table.comparison-table th, .content-section table.comparison-table td { border: 1px solid #ddd; padding: 12px; text-align: left; background-color: transparent; box-shadow: none;}
+        .content-section table.comparison-table th { background-color: #f0f0f0; font-weight: 700; border-bottom: 2px solid #ccc;}
+        .content-section table.comparison-table .highlight { font-weight: 700; color: var(--accent-color); }
+        .content-section table.comparison-table .primary-color { color: var(--primary-color); }
+        .content-section table.comparison-table .secondary-color { color: var(--secondary-color); }
+
+        /* For Graphs/Charts - placeholder as actual charting requires JS libraries not explicitly provided or assumed here */
+        .chart-placeholder {
+            background-color: #e0e0e0;
+            height: 250px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Modal Styling */
+        .modal { display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+        .modal-dialog { max-width: 800px; margin: 50px auto; }
+        .modal-content { background-color: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: none; }
+        .modal-header { padding: 20px 30px; border-bottom: none; }
+        .modal-header .modal-title { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); }
+        .modal-header .close { float: right; font-size: 2rem; font-weight: 700; color: #aaa; line-height: 1; cursor: pointer; }
+        .modal-body { padding: 0 30px 30px 30px; font-size: 1rem; line-height: 1.7; color: #555;}
+        .modal-body h4 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .modal-footer { padding: 20px 30px; border-top: none; justify-content: center; }
+        .modal-footer .btn-confirm { background-color: var(--secondary-color); color: white; padding: 12px 25px; border-radius: 8px; border: none; cursor: pointer; font-size: 1.1rem; transition: background-color 0.3s ease; }
+        .modal-footer .btn-confirm:hover { background-color: var(--primary-color); }
+
+        /* Styling for the specific modal content from the user's code */
+        .contWin { position: relative; padding: 30px;}
+        .btnClosePopup { position: absolute; top: 20px; right: 20px; cursor: pointer; width: 30px; height: 30px;}
+        .popupTitle { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-align: center; margin-bottom: 30px;}
+        .scrollWrap { max-height: 500px; overflow-y: auto; padding-right: 15px;}
+        .privacyInfoText { font-size: 0.9rem; color: #666; margin-bottom: 20px; line-height: 1.6;}
+        .agreeAllCell { margin-bottom: 20px; font-weight: 600; display: flex; align-items: center; }
+        .agreeAllCell input[type=checkbox] { margin-right: 10px; transform: scale(1.3);}
+        .agreeContWrap .agreeBox { margin-bottom: 20px; border: 1px solid #eee; border-radius: 10px; padding: 20px;}
+        .agreeBox .titleCell { font-weight: 700; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;}
+        .agreeBox .titleCell span { color: #888; font-weight: 400;}
+        .agreeBox .titleCell input[type=checkbox] { margin-left: 10px; transform: scale(1.3);}
+        .agreeTextCell { font-size: 0.9rem; color: #555; line-height: 1.7; }
+        .agreeTextCell .bold { font-weight: 600; }
+        .btnConfirm { background-color: var(--accent-color); color: white; padding: 12px 25px; border-radius: 8px; border: none; cursor: pointer; font-size: 1.1rem; transition: background-color 0.3s ease; text-align: center; margin-top: 20px;}
+        .btnConfirm:hover { background-color: #e07000; }
+
+        /* Sticky elements for navigation/forms if needed */
+        .sticky-form {
+            position: sticky;
+            top: 120px; /* Adjust based on header height */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand py-3" href="/">
+            
+            </a>
+            <nav class="d-none d-lg-block">
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <li class="nav-item px-3"><a href="#section-cost" class="nav-link text-white fw-500">유지비 분석</a></li>
+                    <li class="nav-item px-3"><a href="#section-lease-rental" class="nav-link text-white fw-500">리스/렌트 비교</a></li>
+                    <li class="nav-item px-3"><a href="#section-offers" class="nav-link text-white fw-500">할인/혜택</a></li>
+                    <li class="nav-item px-3"><a href="#section-qa" class="nav-link text-white fw-500">FAQ</a></li>
+                </ul>
+            </nav>
+            <a href="#mainForm" title="견적 신청 폼으로 이동" class="btnCompare d-lg-none">견적받기</a>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- Banner Section: Trax Crossover Focus -->
+        <section class="banner-area-5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="banner-content wow fadeInRight" data-wow-delay="0.1s">
+                            <h2 class="w-100 main-ts title_font text-60 mt-0">
+                                <span class="highlight">트랙스 크로스오버</span>,<br>
+                                <span class="highlight">똑똑하게</span> <span class="text-primary">타는 법</span>
+                            </h2>
+                            <p class="mt-3 text-20 text-dark">
+                                2026년 최신 정보를 바탕으로 <span class="fw-bold">트랙스 크로스오버 유지비</span>를 분석하고,<br>
+                                <span class="fw-bold">자동차 리스</span>와 <span class="fw-bold">장기렌트카</span> 중 나에게 맞는 최적의 솔루션을 찾아드립니다.
+                            </p>
+                            <div class="mt-4">
+                                <a href="#mainForm" class="btnCompare me-3">내 차 유지비 계산하기</a>
+                                <a href="#section-lease-rental" class="btnCompare outline-btn">리스/렌트 비교하기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mx-auto text-center mt-4 mt-lg-0">
+                        <div class="hero-img wow">
+                            <img class="person-img" src="https://via.placeholder.com/500x350/E0E0E0/333333?text=Trax+Crossover" alt="트랙스 크로스오버 이미지" width="0" height="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Form Section (S01) and Keyword-rich description -->
+        <section class="pt-80 pb-100 feature-area-3" id="mainForm">
+            <div class="container">
+                <div class="section-title text-center pb-1 mb-lg-5 mb-3">
+                    <h2 class="wow fadeInUp text-50 ls-2">
+                        <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">스마트 플랜</span> 누적 <span class="highlight">3,883</span>명
+                    </h2>
+                    <p class="wow fadeInUp text-18 text-muted mt-3">
+                        2026년 기준, '트랙스 크로스오버'는 합리적인 가격과 뛰어난 연비로 많은 사랑을 받고 있습니다. 하지만 차량 가격 외에도 <span class="fw-bold">월 유지비</span>, <span class="fw-bold">세금</span>, <span class="fw-bold">보험료</span> 등을 꼼꼼히 따져보지 않으면 예상보다 많은 <span class="fw-bold">비용</span>이 발생할 수 있습니다. <span class="fw-bold">자동차 리스</span> 또는 <span class="fw-bold">장기렌트카</span>를 통해 <span class="fw-bold">총 유지비</span>를 절감하는 것이 현명합니다. 지금 바로 <span class="fw-bold">내 차 유지비</span>와 <span class="fw-bold">최적의 구매 방식</span>을 확인해보세요.
+                    </p>
+                </div>
+
+                <div class="mainFormWrap">
+                    <div class="mainFormArea row justify-content-center">
+                        <div class="mainTextCell title_font text-26 mtext-26">
+                            <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">구매/이용</span>,<br>
+                            <span class="primary-color">가장</span> <span class="accent-color">현명하게</span> <span class="primary-color">준비하는</span> <span class="accent-color">방법</span>!
+                        </div>
+                        <div class="subTextCell text-center px-5 ls-1 fw-700">
+                            <span class="mtext-24">
+                                <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">유지비</span> 분석 및 <span class="fw-bold">최적의 리스/렌트 견적</span> 산출을 위해<br>
+                                <span class="fw-bold">고객님의 정보</span>를 입력해주세요. <span class="primary-color">AI</span> 및 <span class="accent-color">GPT-4o Mini</span> 기반으로 <span class="fw-bold">정확한 정보</span>를 제공해드립니다.
+                            </span>
+                            <div class="inputWrap mt-4">
+                                <label for="frmS01Name" class="soundonly">이름</label>
+                                <input type="text" id="frmS01Name" name="frmS01Name" placeholder="성함을 입력해주세요 (예: 홍길동)">
+                            </div>
+                            <div class="inputWrap d-flex">
+                                <label for="first-number2" class="soundonly">핸드폰 앞자리</label>
+                                <select aria-label="first-number2" class="phoneHeadSelector phoneHeadSelector_m form-control mselect me-2">
+                                    <option value="010" selected="">010</option>
+                                    <option value="011">011</option>
+                                    <option value="016">016</option>
+                                    <option value="017">017</option>
+                                    <option value="018">018</option>
+                                    <option value="019">019</option>
+                                </select>
+                                <label for="frmS01Mphone" class="soundonly">전화번호</label>
+                                <input type="tel" id="frmS01Mphone" name="frmS01Mphone" class="phoneInput form-control" placeholder="010-1234-5678 (숫자만 입력)">
+                            </div>
+                            <div class="inputInfoTextCell text-14">* 휴대폰 번호는 (-) 없이 숫자만 입력해주세요!</div>
+
+                            <div class="inputWrap mt-3">
+                                <label for="desired_model" class="soundonly">원하는 트랙스 크로스오버 모델</label>
+                                <select id="desired_model" name="desired_model" class="form-control">
+                                    <option value="">원하는 트랙스 크로스오버 모델 선택</option>
+                                    <option value="trax_crossover_lt">트랙스 크로스오버 LT</option>
+                                    <option value="trax_crossover_premier">트랙스 크로스오버 프리미어</option>
+                                    <option value="trax_crossover_rs">트랙스 크로스오버 RS</option>
+                                    <option value="trax_crossover_all">모든 트림 비교</option>
+                                    <option value="trax_crossover_other">기타/상담</option>
+                                </select>
+                            </div>
+                            <div class="inputWrap d-flex">
+                                <div class="me-2" style="flex: 1;">
+                                    <label for="lease_term" class="soundonly">희망 계약 기간 (리스/렌트)</label>
+                                    <select id="lease_term" name="lease_term" class="form-control">
+                                        <option value="">희망 계약 기간</option>
+                                        <option value="12">12개월</option>
+                                        <option value="24">24개월</option>
+                                        <option value="36">36개월</option>
+                                        <option value="48">48개월</option>
+                                        <option value="60">60개월</option>
+                                    </select>
+                                </div>
+                                <div style="flex: 1;">
+                                    <label for="mileage_option" class="soundonly">연간 희망 주행거리</label>
+                                    <select id="mileage_option" name="mileage_option" class="form-control">
+                                        <option value="">연간 희망 주행거리</option>
+                                        <option value="10000">10,000km</option>
+                                        <option value="15000">15,000km</option>
+                                        <option value="20000">20,000km</option>
+                                        <option value="25000">25,000km</option>
+                                        <option value="30000">30,000km</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="inputWrap">
+                                <label for="preferred_plan" class="soundonly">선호하는 계약 방식</label>
+                                <select id="preferred_plan" name="preferred_plan" class="form-control">
+                                    <option value="">선호하는 계약 방식 선택</option>
+                                    <option value="lease">자동차 리스</option>
+                                    <option value="rental">장기 렌트카</option>
+                                    <option value="undecided">결정 못함 (상담 필요)</option>
+                                </select>
+                            </div>
+                             <div class="inputWrap">
+                                <label for="initial_payment_percentage" class="soundonly">초기 납입 비율 (선택)</label>
+                                <input type="text" id="initial_payment_percentage" name="initial_payment_percentage" class="form-control" placeholder="초기 납입 비율 (예: 0%, 20%, 30% - 선택사항)">
+                            </div>
+                            <div class="inputWrap">
+                                <label for="additional_inquiry" class="soundonly">추가 문의사항</label>
+                                <textarea id="additional_inquiry" name="additional_inquiry" class="form-control" rows="3" placeholder="트랙스 크로스오버 유지비, 리스/렌트 장단점, 현금지원, 사은품, 이벤트 등 궁금한 점을 자유롭게 남겨주세요."></textarea>
+                            </div>
+
+                            <div class="inputInfoTextCell mt-3 d-flex align-items-center">
+                                <input class="checkMain" id="privacyAgree3" name="privacyAgree3" type="checkbox">
+                                <label for="privacyAgree3" data-bs-toggle="modal" data-bs-target="#privacyPopup" class="fw-600 ms-2">개인정보 수집·이용 및 제공 동의</label>
+                                <span class="btnViewPolicy ms-2" data-bs-toggle="modal" data-bs-target="#privacyPopup">보기</span>
+                            </div>
+                            <button type="button" id="btnSubmitS01" class="w-auto text-16 py-2 px-5 mt-4 btnCompare mbt">트랙스 크로스오버 최적 견적 알아보기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Understanding Trax Crossover Costs -->
+        <section class="content-section" id="section-cost">
+            <div class="container">
+                <h2 class="section-heading">트랙스 크로스오버, 2026년 기준 '정말' 얼마일까? 유지비 총정리</h2>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <article>
+                            <h3 class="fw-bold text-dark mb-3">합리적인 선택을 위한 '트랙스 크로스오버' 유지비 분석</h3>
+                            <p>쉐보레 트랙스 크로스오버는 출시 이후 매력적인 디자인과 합리적인 <span class="primary-color">가격</span>으로 꾸준한 인기를 얻고 있습니다. 특히 2026년 최신 모델 역시 <span class="fw-bold">연비</span> 효율성을 개선하며 <span class="fw-bold">총 유지비</span> 절감에 기여하고 있습니다. 하지만 차량 구매 시 가장 중요한 것은 차량 가격 외에 <span class="fw-bold">월 유지비</span>를 정확히 파악하는 것입니다. <span class="primary-color">트랙스 크로스오버 유지비</span>는 크게 유류비, 자동차세, 보험료, 소모품 교체 비용 등으로 나눌 수 있습니다.</p>
+                            <p><span class="primary-color">트랙스 크로스오버 연비</span>는 모델 및 주행 환경에 따라 다소 차이가 있지만, 공인 복합 연비는 보통 11~12km/l 수준입니다. 만약 연간 15,000km를 주행한다고 가정하고, 휘발유 가격을 1,700원/L로 계산하면 연간 유류비는 약 210~230만원 수준으로 예상해볼 수 있습니다. 이는 <span class="fw-bold">트랙스 크로스오버의 월 유지비</span>에서 가장 큰 비중을 차지하는 항목입니다.</p>
+
+                            <h4 class="fw-bold text-dark mt-4">2026년 트랙스 크로스오버 세금 및 보험료 정보</h4>
+                            <p><span class="primary-color">트랙스 크로스오버 자동차세</span>는 배기량과 차종에 따라 부과됩니다. 트랙스 크로스오버의 경우, 1.2L 터보 엔진을 탑재하여 배기량이 낮으므로 자동차세 부담이 비교적 적은 편입니다. 연간 자동차세는 약 20~25만원 수준으로 예상됩니다. 여기에 지방교육세를 포함하면 총액이 결정됩니다. <span class="fw-bold">트랙스 자동차세</span>는 <span class="primary-color">연납 할인</span> 제도를 활용하면 추가로 절감할 수 있습니다.</p>
+                            <p><span class="primary-color">트랙스 크로스오버 보험료</span>는 운전자의 연령, 운전 경력, 사고 이력, 차량 가입 금액 등에 따라 크게 달라집니다. 일반적으로 <span class="fw-bold">20대 운전자</span>의 <span class="fw-bold">트랙스 보험료</span>가 가장 높게 책정되며, <span class="fw-bold">30대 이상</span>이고 <span class="fw-bold">무사고 경력</span>이 길수록 <span class="fw-bold">보험료 평균</span>은 낮아집니다. <span class="primary-color">자동차 보험 비교</span>를 통해 <span class="fw-bold">가장 저렴한 곳</span>을 찾는 것이 <span class="fw-bold">유지비</span> 절감에 중요합니다. <span class="secondary-color">AI</span> 기반 비교 서비스는 <span class="fw-bold">최적의 보험료</span>를 찾는 데 도움을 줄 수 있습니다.</p>
+
+                            <h4 class="fw-bold text-dark mt-4">트랙스 크로스오버 소모품 교체 및 기타 유지보수 비용</h4>
+                            <p>차량 <span class="fw-bold">유지보수</span>에는 정기적인 소모품 교체가 필수적입니다. <span class="primary-color">트랙스 크로스오버</span>의 엔진오일, 필터류, 브레이크 패드, 타이어 등의 교체 비용은 주행 환경과 운전 습관에 따라 달라지지만, 일반적으로 <span class="fw-bold">연간 30~50만원</span> 수준을 예상해볼 수 있습니다. <span class="fw-bold">트랙스 크로스오버</span>는 <span class="fw-bold">전문 업체</span>나 <span class="fw-bold">내돈내산 후기</span>를 참고하여 합리적인 정비소를 선택하는 것이 <span class="fw-bold">비용</span> 절감에 도움이 됩니다.</p>
+
+                            <div class="chart-placeholder mt-4">
+                                <p><strong>그래프: 트랙스 크로스오버 연간 예상 유지비 (2026년 기준)</strong><br>(유류비, 자동차세, 보험료, 소모품 교체 비용 포함)</p>
+                            </div>
+
+                            <h3 class="fw-bold text-dark mt-5">자동차 리스와 장기렌트카: 트랙스 크로스오버 유지비 절감의 핵심</h3>
+                            <p>차량 <span class="fw-bold">유지비</span>를 효과적으로 관리하고 싶다면 <span class="primary-color">자동차 리스</span> 또는 <span class="primary-color">장기렌트카</span>를 고려해볼 만합니다. 이 두 가지 방식은 차량을 <span class="fw-bold">소유</span>하지 않고 일정 기간 <span class="fw-bold">이용</span>하는 방식으로, <span class="fw-bold">초기 비용</span> 부담을 줄이고 <span class="fw-bold">월 고정 지출</span>을 예측 가능하게 만듭니다. 특히 <span class="fw-bold">트랙스 크로스오버</span>와 같이 신차 출고가가 비교적 합리적인 차량의 경우, <span class="fw-bold">리스</span> 또는 <span class="fw-bold">렌트</span>를 통해 <span class="fw-bold">총 유지비</span>를 더욱 절감할 수 있는 <span class="fw-bold">장점</span>이 있습니다. <span class="fw-bold">AI</span> 및 <span class="fw-bold">ChatGPT</span>와 같은 기술을 활용한 <span class="fw-bold">비교 견적</span>을 통해 <span class="fw-bold">가장 저렴한 곳</span>을 찾는 것이 중요합니다.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Leasing vs. Long-Term Rental -->
+        <section class="about-area-2" id="section-lease-rental">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center mb-4">
+                            <h2 class="wow fadeInUp main-ts title_font">
+                                <span class="t_deco">트랙스</span> <span class="t_deco">크로스오버</span> <span class="t_deco">리스</span> vs <span class="t_deco">장기렌트</span><br>
+                                <span class="primary-color">어떤</span> <span class="accent-color">것</span>이 <span class="primary-color">나에게</span> <span class="accent-color">맞을까?</span>
+                            </h2>
+                            <h3 class="text-30 ls-1 fw-600 mt-3">
+                                <span class="secondary-color">2026년 최신 비교</span>를 통해 <span class="primary-color">최적의 선택</span>을 도와드립니다.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="info-card h-100">
+                            <h4 class="fw-bold"><span class="accent-color">자동차 리스</span>: <span class="primary-color">운용</span>의 <span class="accent-color">전문성</span></h4>
+                            <p>자동차 리스는 엄밀히 말해 차량을 <span class="fw-bold">리스 회사</span>로부터 <span class="fw-bold">임대</span>하여 사용하는 방식입니다. 리스 기간 종료 후 차량을 <span class="fw-bold">인수</span>할 수 있다는 <span class="fw-bold">장점</span>이 있으며, <span class="fw-bold">개인사업자</span>나 <span class="fw-bold">법인</span>의 경우 <span class="fw-bold">비용 처리</span>를 통한 <span class="fw-bold">세금 혜택</span>이 큽니다. <span class="fw-bold">트랙스 크로스오버 리스</span> 이용 시, <span class="fw-bold">월 리스료</span> 외에 <span class="fw-bold">자동차세</span>, <span class="fw-bold">보험료</span> 등을 별도로 납부해야 할 수 있습니다. <span class="fw-bold">내돈내산 후기</span>를 보면, <span class="fw-bold">초기 자본</span> 부담이 적고 <span class="fw-bold">자산</span>으로 잡히지 않는다는 점도 <span class="fw-bold">장점</span>으로 꼽습니다.</p>
+                            <p><span class="primary-color">트랙스 크로스오버 리스</span>는 <span class="fw-bold">개인</span>에게는 <span class="fw-bold">차량 가격</span> <span class="fw-bold">할인</span> 효과와 <span class="fw-bold">세금 절감</span> <span class="fw-bold">효과</span>가 있습니다. <span class="fw-bold">자동차리스</span> 전문 <span class="fw-bold">업체</span>를 통해 <span class="fw-bold">견적</span>을 비교하는 것이 <span class="fw-bold">합리적인 선택</span>입니다. <span class="fw-bold">AI</span> 기반 <span class="fw-bold">비교</span>는 <span class="fw-bold">최적의 리스 조건</span>을 찾는 데 도움이 됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="info-card h-100">
+                            <h4 class="fw-bold"><span class="accent-color">장기 렌트카</span>: <span class="primary-color">편리함</span>과 <span class="accent-color">경제성</span></h4>
+                            <p><span class="primary-color">장기 렌트카</span>는 렌터카 회사가 차량을 구매하여 고객에게 <span class="fw-bold">임대</span>해주는 방식입니다. <span class="fw-bold">월 렌트료</span>에는 차량 가격, <span class="fw-bold">자동차세</span>, <span class="fw-bold">보험료</span>, <span class="fw-bold">정비 비용</span> 등이 포함되는 경우가 많아 <span class="fw-bold">월 고정 지출</span> 관리가 매우 용이합니다. <span class="fw-bold">트랙스 크로스오버 장기렌트카</span> 이용 시, <span class="fw-bold">사고 처리</span> 및 <span class="fw-bold">차량 관리</span>에 대한 부담이 적습니다. <span class="fw-bold">내돈내산 후기</span>에서는 <span class="fw-bold">초기 비용</span>을 최소화하고 <span class="fw-bold">주행거리</span>에 따른 <span class="fw-bold">혜택</span>을 누릴 수 있다는 점을 <span class="fw-bold">장점</span>으로 꼽습니다.</p>
+                            <p><span class="primary-color">트랙스 크로스오버 장기렌트</span>는 <span class="fw-bold">개인</span>에게 <span class="fw-bold">할부</span>나 <span class="fw-bold">리스</span>보다 <span class="fw-bold">간편</span>하게 <span class="fw-bold">신차</span>를 이용할 수 있는 방법입니다. <span class="fw-bold">사고 이력</span>이나 <span class="fw-bold">신용 등급</span>에 영향을 덜 받는다는 <span class="fw-bold">장점</span>도 있습니다. <span class="fw-bold">가장 저렴한 곳</span>을 찾기 위해 <span class="fw-bold">트랙스 장기렌트카 비교</span>는 필수입니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <h3 class="fw-bold text-dark mb-3">트랙스 크로스오버 리스 vs 장기렌트: 주요 차이점 및 선택 가이드</h3>
+                        <p>2026년에도 <span class="primary-color">트랙스 크로스오버</span>를 <span class="fw-bold">자동차리스</span> 또는 <span class="fw-bold">장기렌트카</span>로 이용하려는 분들이 많습니다. 두 방식 모두 <span class="fw-bold">초기 자본</span> 부담을 줄이고 <span class="fw-bold">월 고정 지출</span>을 예측 가능하게 하지만, <span class="fw-bold">차이점</span>이 명확합니다. <span class="primary-color">트랙스 크로스오버 리스</span>는 <span class="fw-bold">차량 인수</span> 가능성이 높고 <span class="fw-bold">세금 혜택</span>에 유리할 수 있으며, <span class="primary-color">장기렌트카</span>는 <span class="fw-bold">보험료</span> 및 <span class="fw-bold">세금</span>이 포함되어 <span class="fw-bold">관리 편의성</span>이 높습니다.</p>
+
+                        <table class="comparison-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>자동차 리스</th>
+                                    <th>장기 렌트카</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong class="primary-color">차량 소유권</strong></td>
+                                    <td>리스 회사 (기간 만료 후 인수 가능)</td>
+                                    <td>렌터카 회사 (반납 또는 인수 가능)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">월 납입금 포함 항목</strong></td>
+                                    <td>차량 가액 (대출 이자 성격)</td>
+                                    <td>차량 가액 + 자동차세 + 보험료 + (선택)정비 비용</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">세금 혜택</strong></td>
+                                    <td>개인/법인 사업자 비용 처리 가능 (세금 절감 효과)</td>
+                                    <td>차량가액에 자동차세 포함 (개인 소득세 영향 적음)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">보험/세금 처리</strong></td>
+                                    <td>별도 납부 (운전자 명의)</td>
+                                    <td>렌트 비용에 포함 (렌터카 회사 명의)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">사고 처리</strong></td>
+                                    <td>운전자 책임 (보험 처리)</td>
+                                    <td>렌터카 회사 보험으로 처리 (보험료 할증 등은 렌트사에 영향)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">초기 비용</strong></td>
+                                    <td>보증금 (보통 10~40%) 또는 선수금</td>
+                                    <td>보증금 (보통 0~30%) 또는 선수금 (0% 옵션 많음)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">정비/관리</strong></td>
+                                    <td>운전자 책임 (필수 정비)</td>
+                                    <td>포함 옵션 선택 시 렌터카 회사에서 관리</td>
+                                </tr>
+                                <tr>
+                                    <td><strong class="primary-color">적합 대상</strong></td>
+                                    <td>차량 <span class="primary-color">인수</span> 희망자, <span class="primary-color">세금 혜택</span> 중요시하는 사업자</td>
+                                    <td><span class="primary-color">월 고정 지출</span> 선호, <span class="primary-color">보험/세금</span> 관리 편리성 중시, <span class="primary-color">초기 비용</span> 최소화 희망자</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-4">2026년 <span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">최저가</span> <span class="fw-bold">견적</span>을 비교해 볼 때, <span class="fw-bold">리스</span>는 <span class="fw-bold">장점</span>과 <span class="fw-bold">단점</span>을, <span class="fw-bold">렌트</span> 또한 <span class="fw-bold">장단점</span>을 분명히 이해하는 것이 중요합니다. <span class="primary-color">AI</span>와 <span class="accent-color">Gemini</span>/ <span class="primary-color">ChatGPT</span>와 같은 <span class="fw-bold">첨단 기술</span>을 활용하여 <span class="fw-bold">개인 맞춤형</span> <span class="fw-bold">견적</span>을 산출하는 것이 <span class="fw-bold">최적의 선택</span>을 돕습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Offers and Benefits -->
+        <section class="content-section" id="section-offers">
+            <div class="container">
+                <h2 class="section-heading">트랙스 크로스오버 <span class="highlight">특별 혜택</span> 및 <span class="secondary-color">프로모션</span> (2026년)</h2>
+                <p>2026년, <span class="primary-color">트랙스 크로스오버</span>를 <span class="fw-bold">자동차 리스</span> 또는 <span class="fw-bold">장기렌트카</span>로 이용하시면 다양한 <span class="fw-bold">할인</span> 및 <span class="fw-bold">혜택</span>을 받으실 수 있습니다. <span class="primary-color">신규</span> 고객을 위한 <span class="fw-bold">현금 지원</span>, <span class="fw-bold">상품권</span> 증정 <span class="fw-bold">이벤트</span>부터 <span class="fw-bold">특정 계약 조건</span>에 따른 <span class="fw-bold">사은품</span>까지, <span class="fw-bold">가격</span> <span class="fw-bold">비교</span>는 필수입니다.</p>
+
+                <div class="row align-items-center justify-content-center mt-5">
+                    <div class="col-4 col-md text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100/FF7F00/FFFFFF?text=할인" width="100" height="100" alt="할인 혜택">
+                        <p class="text-24 fw-700 mt-2">월 납입금<br>할인</p>
+                    </div>
+                    <div class="col-4 col-md text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100/00A9CE/FFFFFF?text=현금" width="100" height="100" alt="현금 지원">
+                        <p class="text-24 fw-700 mt-2">초기 비용<br>현금 지원</p>
+                    </div>
+                    <div class="col-4 col-md text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100/005A9C/FFFFFF?text=사은품" width="100" height="100" alt="사은품">
+                        <p class="text-24 fw-700 mt-2">계약 <br>사은품</p>
+                    </div>
+                    <div class="col-4 col-md text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100/FFA500/FFFFFF?text=이벤트" width="100" height="100" alt="이벤트">
+                        <p class="text-24 fw-700 mt-2">기간 한정<br>이벤트</p>
+                    </div>
+                    <div class="col-4 col-md text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100/800080/FFFFFF?text=상품권" width="100" height="100" alt="상품권">
+                        <p class="text-24 fw-700 mt-2">주유<br>상품권</p>
+                    </div>
+                </div>
+
+                <h3 class="fw-bold text-dark mt-5">AI 기반 <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">견적 비교</span>: <span class="fw-bold">비용</span> 절감 노하우</h3>
+                <p><span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">리스</span> 및 <span class="fw-bold">장기렌트카</span> <span class="fw-bold">비용</span>을 <span class="fw-bold">최저가</span>로 이용하기 위해서는 <span class="fw-bold">여러 업체</span>의 <span class="fw-bold">견적</span>을 <span class="fw-bold">비교</span>하는 것이 필수입니다. <span class="primary-color">네이버</span>, <span class="primary-color">구글</span> 등에서 <span class="fw-bold">트랙스 크로스오버 리스/렌트</span> 관련 <span class="fw-bold">후기</span>(<span class="fw-bold">내돈내산</span> 포함)를 찾아보고, <span class="fw-bold">AI</span> 및 <span class="fw-bold">ChatGPT</span> 기반 <span class="fw-bold">비교 플랫폼</span>을 활용하면 <span class="fw-bold">평균</span> <span class="fw-bold">금액</span> 대비 <span class="fw-bold">합리적인 가격</span>을 찾을 수 있습니다. <span class="fw-bold">주요 혜택</span>으로는 <span class="fw-bold">무보증</span>, <span class="fw-bold">월 렌트료 할인</span>, <span class="fw-bold">차량 용품</span> <span class="fw-bold">증정</span> 등이 있습니다. <span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">지원금</span> <span class="fw-bold">이벤트</span>는 <span class="fw-bold">신규</span> <span class="fw-bold">고객</span>에게 특히 <span class="fw-bold">유리</span>합니다.</p>
+
+                <div class="row mt-5 align-items-center justify-content-center">
+                    <div class="col-12 text-center cta-button">
+                        <a href="#mainForm" class="btn-primary">2026년 트랙스 크로스오버 최저가 견적 확인하기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Deep Dive into Calculation and Keywords -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-heading">트랙스 크로스오버 <span class="highlight">유지비</span> 계산 심화: <span class="secondary-color">2026년</span> <span class="primary-color">AI</span> <span class="accent-color">분석</span></h2>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <article>
+                            <h3 class="fw-bold text-dark mb-3">트랙스 크로스오버 <span class="primary-color">리스/렌트</span> <span class="accent-color">견적</span> 구성 요소 상세 분석</h3>
+                            <p><span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">리스</span> 및 <span class="fw-bold">장기렌트카</span> <span class="fw-bold">견적</span>은 단순히 <span class="fw-bold">월 납입금</span>만으로 결정되지 않습니다. <span class="fw-bold">차량 가격</span>, <span class="fw-bold">계약 기간</span>, <span class="fw-bold">주행거리 옵션</span>, <span class="fw-bold">초기 납입금</span> (선수금, 보증금), <span class="fw-bold">특정 옵션</span> (내비게이션, 선루프 등), <span class="fw-bold">보험 등급</span>, <span class="fw-bold">세금</span> 계산 방식 등이 복합적으로 작용합니다. <span class="primary-color">AI</span>와 <span class="primary-color">Gemini</span>, <span class="primary-color">ChatGPT</span>는 이러한 복잡한 요소를 고려하여 <span class="fw-bold">개인별 최적화된 견적</span>을 <span class="fw-bold">추천</span>합니다.</p>
+                            <p><span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">연간 주행거리</span> 옵션 선택은 <span class="fw-bold">월 고정 지출</span>에 큰 영향을 미칩니다. <span class="fw-bold">연 10,000km</span> 이하 <span class="fw-bold">운행</span> 시 <span class="fw-bold">렌트료 할인</span> <span class="fw-bold">혜택</span>이 크며, <span class="fw-bold">개인 사업자</span>의 경우 <span class="fw-bold">트랙스 크로스오버</span> <span class="fw-bold">비용 처리</span>를 통해 <span class="fw-bold">세금</span>을 절감할 수 있습니다. <span class="primary-color">AI</span>는 <span class="fw-bold">예상 주행거리</span>를 바탕으로 <span class="fw-bold">최저가</span> <span class="fw-bold">견적</span>을 제시하며, <span class="fw-bold">차이점</span>을 명확히 알려줍니다.</p>
+
+                            <h4 class="fw-bold text-dark mt-4">트랙스 크로스오버 <span class="primary-color">자동차리스</span> <span class="accent-color">장단점</span> 및 <span class="primary-color">내돈내산 후기</span> 기반 정보</h4>
+                            <ul>
+                                <li><strong>장점</strong>:
+                                    <ul>
+                                        <li><span class="primary-color">개인/법인 사업자</span> <span class="fw-bold">세금 혜택</span> (비용 처리)</li>
+                                        <li><span class="fw-bold">초기 비용</span> 부담 감소 (낮은 보증금/무보증 옵션)</li>
+                                        <li><span class="fw-bold">차량 인수</span> 시 <span class="fw-bold">중고차</span> <span class="fw-bold">가격</span> 고려 가능</li>
+                                        <li><span class="fw-bold">트랙스 크로스오버</span> <span class="fw-bold">전문</span> <span class="fw-bold">업체</span>를 통한 <span class="fw-bold">맞춤 견적</span></li>
+                                    </ul>
+                                </li>
+                                <li><strong>단점</strong>:
+                                    <ul>
+                                        <li><span class="fw-bold">월 리스료</span> 외 <span class="fw-bold">자동차세</span>, <span class="fw-bold">보험료</span> 별도 납부</li>
+                                        <li><span class="fw-bold">보험료 할증</span>이 <span class="fw-bold">리스 회사</span>에 영향 (연령/경력 따라 <span class="fw-bold">가격</span> 변동)</li>
+                                        <li><span class="fw-bold">중도 해지</span> 시 <span class="fw-bold">위약금</span> 발생 가능성</li>
+                                        <li><span class="fw-bold">자산</span>으로 잡혀 <span class="fw-bold">신용 평가</span> 영향 (개인 리스 시)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p><span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">내돈내산 후기</span>를 보면, <span class="fw-bold">리스</span>는 <span class="fw-bold">장기적으로</span> <span class="fw-bold">차량</span>을 <span class="fw-bold">인수</span>할 계획이 있거나 <span class="fw-bold">사업자</span>로서 <span class="fw-bold">세금 혜택</span>을 극대화하고 싶을 때 <span class="fw-bold">유리</span>합니다. <span class="primary-color">AI</span>는 <span class="fw-bold">이러한 복합적인 요소</span>를 고려하여 <span class="fw-bold">최적의 리스 상품</span>을 <span class="fw-bold">추천</span>합니다.</p>
+
+                            <h4 class="fw-bold text-dark mt-4">트랙스 크로스오버 <span class="primary-color">장기렌트카</span> <span class="accent-color">장단점</span> 및 <span class="primary-color">싸게</span> <span class="accent-color">사는 법</span></h4>
+                            <ul>
+                                <li><strong>장점</strong>:
+                                    <ul>
+                                        <li><span class="fw-bold">월 렌트료</span>에 <span class="fw-bold">자동차세</span>, <span class="fw-bold">보험료</span> 포함 (월 <span class="fw-bold">고정 지출</span> 관리 용이)</li>
+                                        <li><span class="fw-bold">초기 비용</span> 최소화 (무보증 옵션 활성화)</li>
+                                        <li><span class="fw-bold">사고 처리</span> 및 <span class="fw-bold">차량 관리</span> <span class="fw-bold">편의성</span> 높음</li>
+                                        <li><span class="fw-bold">개인</span> <span class="fw-bold">신용 등급</span>, <span class="fw-bold">사고 이력</span> 영향 적음 (국내 <span class="fw-bold">렌트카</span> <span class="fw-bold">가입 순위</span> 높은 업체 이용 시)</li>
+                                        <li><span class="fw-bold">트랙스 크로스오버</span> <span class="fw-bold">이벤트</span> 적용 시 <span class="fw-bold">가장 저렴한 곳</span> <span class="fw-bold">발견</span> 가능</li>
+                                    </ul>
+                                </li>
+                                <li><strong>단점</strong>:
+                                    <ul>
+                                        <li><span class="fw-bold">차량</span> <span class="fw-bold">인수</span> 시 <span class="fw-bold">리스</span>보다 <span class="fw-bold">비쌀 수 있음</span></li>
+                                        <li><span class="fw-bold">연간 주행거리</span> 초과 시 <span class="fw-bold">추가 비용</span> 발생</li>
+                                        <li><span class="fw-bold">하허호</span> <span class="fw-bold">번호판</span> (일부 <span class="fw-bold">렌트</span> <span class="fw-bold">차량</span>)</li>
+                                        <li><span class="fw-bold">렌터카</span> <span class="fw-bold">업체</span> <span class="fw-bold">선택</span> <span class="fw-bold">중요</span> (<span class="fw-bold">신뢰도</span>, <span class="fw-bold">서비스</span> <span class="fw-bold">평가</span> <span class="fw-bold">확인</span>)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p><span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">장기렌트카</span>는 <span class="fw-bold">신차</span>를 <span class="fw-bold">편하게</span> <span class="fw-bold">이용</span>하고 싶거나, <span class="fw-bold">월 고정 지출</span> 관리를 <span class="fw-bold">단순화</span>하고 싶은 <span class="fw-bold">개인</span>에게 <span class="fw-bold">매력적</span>입니다. <span class="primary-color">AI</span> 기반 <span class="fw-bold">비교</span>를 통해 <span class="fw-bold">가장 저렴한</span> <span class="fw-bold">견적</span>과 <span class="fw-bold">혜택</span>을 <span class="fw-bold">찾아</span> <span class="fw-bold">싸게</span> <span class="fw-bold">사는 법</span>을 안내해 드립니다.</p>
+
+                            <h3 class="fw-bold text-dark mt-5">2026년 <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">시장</span> <span class="primary-color">전망</span> 및 <span class="accent-color">AI</span> <span class="primary-color">예측</span></h3>
+                            <p><span class="primary-color">2026년</span>, <span class="fw-bold">트랙스 크로스오버</span>는 <span class="fw-bold">SUV 시장</span>에서 <span class="fw-bold">꾸준한 인기</span>를 이어갈 것으로 <span class="fw-bold">예측</span>됩니다. <span class="primary-color">ChatGPT</span>와 같은 <span class="fw-bold">AI 기술</span>의 발전은 <span class="fw-bold">개인 맞춤형</span> <span class="fw-bold">견적</span> 산출을 더욱 <span class="fw-bold">정교</span>하게 만들 것이며, <span class="fw-bold">유지비</span> <span class="fw-bold">절감</span> <span class="fw-bold">솔루션</span> 또한 <span class="fw-bold">진화</span>할 것입니다. <span class="primary-color">자동차 리스</span> 및 <span class="primary-color">장기렌트카</span> <span class="primary-color">업계</span>는 <span class="primary-color">텔레매틱스</span> 기술을 활용한 <span class="primary-color">운전 습관 연동 할인</span> (UBI) <span class="primary-color">특약</span>을 <span class="primary-color">확대</span>할 것으로 보입니다. 이는 <span class="primary-color">안전 운전자</span>에게 <span class="primary-color">더 많은 혜택</span>을 제공하여 <span class="primary-color">총 유지비</span>를 <span class="primary-color">절감</span>하게 할 것입니다. <span class="primary-color">AI</span>는 <span class="primary-color">이러한 변화</span>를 <span class="primary-color">실시간</span>으로 <span class="primary-color">분석</span>하여 <span class="primary-color">고객</span>에게 <span class="primary-color">가장 유리</span>한 <span class="primary-color">조건</span>을 <span class="primary-color">제시</span>할 것입니다.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Trust Building and External Links -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-heading">신뢰할 수 있는 정보: <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">관련</span> <span class="primary-color">공신력</span> <span class="accent-color">사이트</span></h2>
+                <p>보다 정확하고 신뢰할 수 있는 <span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">유지비</span>, <span class="fw-bold">리스</span>, <span class="fw-bold">렌트</span> 관련 정보는 <span class="fw-bold">정부 기관</span> 및 <span class="fw-bold">공신력</span> 있는 <span class="fw-bold">전문 기관</span>의 자료를 참고하는 것이 좋습니다. 저희는 <span class="fw-bold">AI</span> 기반 <span class="fw-bold">분석</span>과 함께 다음 <span class="fw-bold">신뢰할 수 있는 외부 사이트</span>들의 정보를 종합하여 <span class="fw-bold">최적의 견적</span>을 제공합니다.</p>
+                <ul class="mt-4">
+                    <li><a href="https://www.kidi.or.kr/" target="_blank" class="text-secondary fw-bold">보험개발원 (KIDI)</a>: 자동차보험 관련 통계, 신차 및 중고차 가액 정보 제공.</li>
+                    <li><a href="https://www.fss.or.kr/" target="_blank" class="text-secondary fw-bold">금융감독원 (FSS)</a>: 자동차 금융 상품 관련 소비자 보호 및 최신 규정 안내.</li>
+                    <li><a href="https://www.korea.kr/" target="_blank" class="text-secondary fw-bold">정부24</a>: 자동차 등록, 세금 등 자동차 관련 정부 민원 및 정보 제공.</li>
+                    <li><a href="https://namu.wiki/w/%EC%89%90%EB%B3%B4%EB%A0%88%20%ED%8A%B8%EB%9E%99%EC%8A%A4%20%ED%81%AC%EB%A1%A0%EC%98%A4%EB%B2%84" target="_blank" class="text-secondary fw-bold">나무위키: 쉐보레 트랙스 크로스오버</a>: 차량 모델에 대한 상세 정보, 장단점, 사용자 평가 등 제공.</li>
+                    <li><a href="https://www.koreadrive.org/" target="_blank" class="text-secondary fw-bold">한국자동차진흥공사</a>: 자동차 산업 동향, 소비자 정보 등 관련 자료 제공.</li>
+                </ul>
+                <p class="mt-4">이러한 <span class="primary-color">신뢰할 수 있는 정보</span>들을 바탕으로 <span class="fw-bold">AI</span>와 <span class="fw-bold">GPT-4o Mini</span>는 <span class="primary-color">트랙스 크로스오버</span> <span class="fw-bold">유지비</span>, <span class="fw-bold">리스</span>, <span class="fw-bold">렌트</span>에 대한 <span class="fw-bold">정확한 비교</span>와 <span class="fw-bold">합리적인 견적</span>을 <span class="fw-bold">추천</span>합니다. <span class="primary-color">내돈내산 후기</span>나 <span class="primary-color">디시</span> 등 커뮤니티 정보도 참고하되, <span class="fw-bold">전문적인 분석</span>과의 <span class="fw-bold">조합</span>이 <span class="fw-bold">가장 중요</span>합니다.</p>
+            </div>
+        </section>
+
+        <!-- Informational Content Section: Q&A -->
+        <section class="content-section" id="section-qa">
+            <div class="container">
+                <h2 class="section-heading">트랙스 크로스오버 <span class="highlight">궁금증 해결</span>: <span class="secondary-color">FAQ</span></h2>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <article>
+                            <h3 class="fw-bold text-dark mb-3">Q. <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">리스</span>와 <span class="primary-color">장기렌트</span> <span class="accent-color">차이점</span>이 뭔가요? <span class="primary-color">가장</span> <span class="accent-color">싼 곳</span>은 어디인가요?</h3>
+                            <p>A. <span class="primary-color">자동차 리스</span>는 <span class="fw-bold">차량 인수</span> 가능성이 높고 <span class="fw-bold">세금 혜택</span>에 유리한 반면, <span class="primary-color">장기렌트카</span>는 <span class="fw-bold">월 고정 지출</span> 관리가 용이하고 <span class="fw-bold">초기 비용</span> 부담이 적습니다. <span class="fw-bold">가장 싼 곳</span>은 <span class="primary-color">AI</span> 기반 <span class="primary-color">견적 비교</span>를 통해 <span class="primary-color">여러 업체의 프로모션</span> 및 <span class="primary-color">이벤트</span>를 종합적으로 <span class="primary-color">확인</span>해야 찾을 수 있습니다. <span class="primary-color">Gemini</span>/ <span class="primary-color">ChatGPT</span>가 <span class="primary-color">이러한 정보</span>를 <span class="primary-color">종합</span>하여 <span class="primary-color">최적의 옵션</span>을 <span class="primary-color">추천</span>해 드립니다.</p>
+
+                            <h3 class="fw-bold text-dark mt-5">Q. <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">유지비</span>는 <span class="primary-color">평균</span> <span class="accent-color">얼마</span> 정도 나오나요?</h3>
+                            <p>A. <span class="primary-color">트랙스 크로스오버</span>의 <span class="primary-color">월 평균 유지비</span>는 <span class="fw-bold">연간 주행 거리</span>, <span class="fw-bold">유가</span>, <span class="fw-bold">보험 조건</span>, <span class="fw-bold">자동차세</span> 등에 따라 <span class="primary-color">상당한 차이</span>를 보입니다. <span class="fw-bold">2026년</span> <span class="primary-color">기준</span>으로 <span class="primary-color">유류비</span>, <span class="primary-color">자동차세</span>, <span class="primary-color">보험료</span>, <span class="primary-color">소모품</span> <span class="primary-color">교체 비용</span>을 모두 합산하면 <span class="primary-color">월 30만원</span>에서 <span class="primary-color">50만원 이상</span>까지 <span class="primary-color">다양</span>할 수 있습니다. <span class="primary-color">AI</span> <span class="primary-color">유지비 계산기</span>를 통해 <span class="primary-color">정확한 예상 금액</span>을 <span class="primary-color">확인</span>해보시는 것이 좋습니다.</p>
+
+                            <h3 class="fw-bold text-dark mt-5">Q. <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">리스/렌트</span> <span class="primary-color">계약</span> 시 <span class="accent-color">주의할 점</span>이 있나요?</h3>
+                            <p>A. <span class="primary-color">트랙스 크로스오버</span> <span class="primary-color">리스</span> 또는 <span class="primary-color">장기렌트</span> <span class="primary-color">계약</span> 시에는 <span class="primary-color">월 납입금</span> 외에 <span class="primary-color">총 계약 기간</span>, <span class="primary-color">연간 주행거리</span> 제한, <span class="primary-color">초기 비용</span> (보증금/선수금), <span class="primary-color">차량 반납</span> 또는 <span class="primary-color">인수 조건</span>, <span class="primary-color">중도 해지 수수료</span> 등을 <span class="primary-color">반드시 확인</span>해야 합니다. <span class="primary-color">AI</span>는 <span class="primary-color">계약서</span> 상의 <span class="primary-color">숨겨진 조건</span>이나 <span class="primary-color">비용</span>을 <span class="primary-color">분석</span>하여 <span class="primary-color">잠재적 위험</span>을 <span class="primary-color">사전에</span> <span class="primary-color">알려</span>드립니다.</p>
+
+                            <h3 class="fw-bold text-dark mt-5">Q. <span class="primary-color">트랙스 크로스오버</span> <span class="accent-color">사업자</span> <span class="primary-color">할인</span> <span class="accent-color">혜택</span>은 어떻게 되나요?</h3>
+                            <p>A. <span class="primary-color">개인사업자</span> 및 <span class="primary-color">법인사업자</span>는 <span class="primary-color">트랙스 크로스오버</span> <span class="primary-color">리스</span> 이용 시 <span class="primary-color">차량 관련 비용</span>을 <span class="primary-color">비용 처리</span>하여 <span class="primary-color">소득세</span> 또는 <span class="primary-color">법인세</span>를 <span class="primary-color">절감</span>할 수 있습니다. <span class="primary-color">장기렌트카</span> 역시 <span class="primary-color">월 렌트료</span>가 <span class="primary-color">비용 처리</span> 대상이 됩니다. <span class="primary-color">AI</span>는 <span class="primary-color">개별 사업자</span>의 <span class="primary-color">상황</span>에 <span class="primary-color">맞춘</span> <span class="primary-color">최적의 절세 방안</span>을 <span class="primary-color">제시</span>합니다. <span class="primary-color">연간</span> <span class="primary-color">수백만원</span>의 <span class="primary-color">세금 지원금</span> <span class="primary-color">효과</span>를 <span class="primary-color">기대</span>할 수 있습니다.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section - Reiterating the value prop -->
+        <section class="cta-section bg-primary py-5">
+            <div class="container text-center">
+                <h3 class="text-white mb-3">
+                    2026년 <span class="highlight">트랙스 크로스오버</span>, <span class="secondary-color">가장</span> <span class="primary-color">합리적인</span> <span class="accent-color">선택</span>은?
+                </h3>
+                <p class="text-white mb-4">
+                    <span class="fw-bold">유지비 분석</span>부터 <span class="fw-bold">자동차 리스</span>, <span class="fw-bold">장기렌트카</span> <span class="fw-bold">비교 견적</span>까지, <span class="fw-bold">AI</span>가 <span class="fw-bold">최적의 솔루션</span>을 찾아드립니다.
+                </p>
+                <a href="#mainForm" class="btnCompare btn-lg">지금 바로 무료 견적 받기</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <!-- Modal for Privacy Policy -->
+    <div class="modal fade" id="privacyPopup" tabindex="-1" aria-labelledby="privacyPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="contWin">
+                    <svg class="btnClosePopup" data-bs-dismiss="modal" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                        <line x1="5" y1="5" x2="25" y2="25" stroke="#333" stroke-width="2"/>
+                        <line x1="25" y1="5" x2="5" y2="25" stroke="#333" stroke-width="2"/>
+                    </svg>
+                    <div class="popupTitle">개인(신용)정보 수집,이용,제공 동의서</div>
+                    <div class="scrollWrap">
+                        <div class="privacyInfoText">
+                            상품 서비스 안내 등을 위하여 본인의 개인(신용)정보를 수집, 이용하거나 제 3자에게 제공하는 경우에는 개인정보보호법 제 15조 제 1항 제 1호, 제 17조 제 1항 제1호, 제 22조의 3항, 신용정보의 이용 및 보호에 관한 법률 제 15조 제 2항, 제 32조 1항, 제 33조 및 제 34조에 따라 본인의 동의가 필요합니다.
+                        </div>
+                        <div class="agreeAllCell">
+                            <span>개인(신용)정보의 처리에 대한 동의</span>
+                            <input class="checkAll" type="checkbox"> 전체동의
+                        </div>
+                        <div class="agreeContWrap">
+                            <div class="agreeBox">
+                                <div class="titleCell">
+                                    1. 개인정보 수집 및 이용에 대한 동의<span>[필수]</span>
+                                    <input class="agreeChk1" type="checkbox">
+                                </div>
+                                <div class="agreeTextCell">
+                                    <span class="bold">□ 개인(신용)정보의 수집ㆍ이용 목적</span><br>
+                                    : 다이렉트 트랙스 크로스오버 리스/렌트 견적 서비스 제공 및 만기 안내, 맞춤형 차량 정보 제공<br>
+                                    <span class="bold">□ 개인(신용)정보의 수집 · 이용 항목</span><br>
+                                    : 이름, 연락처, 희망 모델, 계약 기간, 주행 거리 옵션, 초기 납입 비율, 선호 계약 방식, 추가 문의사항<br>
+                                    <span class="bold">□ 개인정보 보유 및 이용기간</span><br>
+                                    : 동의일로부터 5년간 보유<br>
+                                    ※ 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 서비스 이용이 제한됩니다.
+                                </div>
+                            </div>
+
+                            <div class="agreeBox">
+                                <div class="titleCell">
+                                    2. 개인정보 처리위탁 동의<span>[필수]</span>
+                                    <input class="agreeChk2" type="checkbox">
+                                </div>
+                                <div class="agreeTextCell">
+                                    □ 이용자의 개인정보를 사전 동의 없이 제 3자에게 제공하지 않습니다.<br>
+                                    □ 이용자의 사전 동의에 따라 해당 개인정보가 제 3자에게 제공되는 경우는 다음과 같습니다.<br>
+                                    <span class="bold">□ 제공받는 자</span><br>
+                                    : 자동차 금융/리스/렌트 관련 제휴 업체, AI 분석 시스템 제공 업체<br>
+                                    <span class="bold">□ 제공받는 자의 이용 목적</span><br>
+                                    : 트랙스 크로스오버 리스/렌트 견적 제공, 맞춤형 상품 제안, 차량 정보 안내<br>
+                                    <span class="bold">□ 제공 항목</span><br>
+                                    : 이름, 연락처, 희망 모델, 계약 조건, 문의 내용 등 서비스 제공에 필요한 정보<br>
+                                    <span class="bold">□ 제공받는 자의 개인정보 보유 및 이용기간</span><br>
+                                    : 동의일로부터 5년간 보유 (단, 관련 법령에 따라 보존 필요 시 예외)<br>
+                                    ※ 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 서비스 이용이 제한됩니다.
+                                </div>
+                            </div>
+
+                            <div class="agreeBox">
+                                <div class="titleCell">
+                                    3. 마케팅 및 광고 활용 동의<span>[선택]</span>
+                                    <input class="agreeChk3" type="checkbox">
+                                </div>
+                                <div class="agreeTextCell">
+                                    <span class="bold">□ 제공받는 자</span><br>
+                                    : 제휴 금융사, 자동차 제조사, 마케팅 정보 제공 업체<br>
+                                    <span class="bold">□ 제공받는 자의 이용 목적</span><br>
+                                    : 맞춤형 차량 정보, 프로모션, 이벤트, 금융 상품 등 관련 광고 정보 제공<br>
+                                    <span class="bold">□ 제공 항목</span><br>
+                                    : 이름, 연락처, 희망 모델, 관심 차량, 문의 내용 등 (마케팅 목적에 활용 가능한 정보)<br>
+                                    <span class="bold">□ 제공받는 자의 개인정보 보유 및 이용기간</span><br>
+                                    : 동의일로부터 5년 또는 동의 철회 시까지<br>
+                                    ※ 상기 개인정보는 서비스 제공을 위한 최소한의 정보 외 추가적인 마케팅 활용을 위해 동의받는 사항입니다. 동의 거부 시에도 서비스 이용에는 제한이 없습니다.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="privacyInfoText">
+                            □ 안내 수단 : 문자메시지, 이메일, 전화 등<br>
+                            □ 제3자 정보 제공 철회 : 동의하신 경우에도 언제든지 제3자에게 제공된 개인정보의 삭제를 요구할 수 있습니다.<br>
+                            고객님께서는 위 동의 사항에 대해 동의하지 않을 권리가 있으며, 동의 거부 시 일부 서비스 이용이 제한될 수 있습니다.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-confirm" data-bs-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Include Font Awesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- JS here (using jQuery for compatibility with existing code and Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add other necessary JS files if needed, like preloader.js, etc. -->
+    <!-- <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/preloader.js"></script> -->
+    <!-- <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.smoothscroll.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.counterup.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.nice-select.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/custom.js"></script> -->
+
+
+    <script>
+        // Placeholder for actual JS logic adaptation based on provided structure.
+        // This script focuses on form submission and modal interaction.
+
+        $(document).ready(function () {
+            // Smooth scroll to sections
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.hash);
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80 // Adjust offset for sticky header
+                    }, 800);
+                }
+            });
+
+            // Form submission logic for S01
+            $("#btnSubmitS01").on("click", function () {
+                const frmS01Name = $("#frmS01Name").val();
+                const phoneHead = $(".phoneHeadSelector_m").val();
+                const phoneNumber = $("#frmS01Mphone").val();
+                const userPhone = phoneHead + phoneNumber.replace(/\D/g, ''); // Ensure only numbers
+                const isChecked = $("#privacyAgree3").prop("checked");
+
+                const desiredModel = $("#desired_model").val();
+                const leaseTerm = $("#lease_term").val();
+                const mileageOption = $("#mileage_option").val();
+                const preferredPlan = $("#preferred_plan").val();
+                const initialPaymentPercentage = $("#initial_payment_percentage").val();
+                const additionalInquiry = $("#additional_inquiry").val();
+
+                if (!frmS01Name || !userPhone.match(/^01[016789]\d{7,8}$/)) {
+                    alert("성함과 유효한 휴대폰 번호를 입력해주세요.");
+                    return;
+                }
+                if (!desiredModel || !leaseTerm || !mileageOption || !preferredPlan) {
+                    alert("원하는 모델, 계약 기간, 주행 거리, 계약 방식을 모두 선택해주세요.");
+                    return;
+                }
+                if (!isChecked) {
+                    alert("개인정보 수집·이용 및 제공에 동의해야 합니다.");
+                    // Optionally open modal to prompt consent
+                    // const myModal = new bootstrap.Modal(document.getElementById('privacyPopup'));
+                    // myModal.show();
+                    return;
+                }
+
+                // Prepare data for submission (simulated AJAX call)
+                const formData = {
+                    formType: 1,
+                    userName: frmS01Name,
+                    userPhone: userPhone,
+                    desiredModel: desiredModel,
+                    leaseTerm: leaseTerm,
+                    mileageOption: mileageOption,
+                    preferredPlan: preferredPlan,
+                    initialPaymentPercentage: initialPaymentPercentage,
+                    additionalInquiry: additionalInquiry,
+                    consent: isChecked
+                };
+
+                console.log("Submitting form data:", formData);
+
+                // Simulate AJAX submission
+                alert("제출되었습니다! (실제 서버로 전송되는 것은 시뮬레이션입니다.)");
+                // In a real application, you would use $.ajax or fetch here
+                /*
+                $.ajax({
+                    url: "/api/submit-trax-inquiry", // Replace with your API endpoint
+                    type: "POST",
+                    data: formData,
+                    success: function(response) {
+                        alert("신청이 완료되었습니다!");
+                        // Optionally reload or redirect
+                        // window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        alert("신청 중 오류가 발생했습니다. 다시 시도해주세요.");
+                        console.error(error);
+                    }
+                });
+                */
+            });
+
+            // Modal functionality for privacy policy
+            $(".btnViewPolicy, label[for='privacyAgree3']").on("click", function () {
+                $("#privacyPopup").modal('show');
+            });
+
+            // Handling checkboxes for privacy policy modal
+            $("#privacyPopup .checkAll").on("click", function () {
+                const isChecked = $(this).prop("checked");
+                $("#privacyPopup .agreeContWrap input[type=checkbox]").prop("checked", isChecked);
+                // Update parent consent checkbox if needed
+                $(".checkMain").prop("checked", isChecked);
+            });
+
+            $("#privacyPopup .agreeContWrap input[type=checkbox]").on("click", function () {
+                let allChecked = true;
+                $("#privacyPopup .agreeContWrap input[type=checkbox]").each(function () {
+                    if (!$(this).prop("checked")) {
+                        allChecked = false;
+                        return false; // Exit loop early
+                    }
+                });
+                $("#privacyPopup .checkAll").prop("checked", allChecked);
+                // Update parent consent checkbox if needed
+                $(".checkMain").prop("checked", allChecked);
+            });
+
+            // Prevent click event propagation from checkboxes inside the modal
+            $("#privacyPopup .agreeContWrap input[type=checkbox]").on("click", function(e) {
+                e.stopPropagation();
+            });
+            $("#privacyPopup .checkAll").on("click", function(e) {
+                e.stopPropagation();
+            });
+
+            // Input validation for phone number format
+            $('input[type="tel"]').on('input', function() {
+                let value = $(this).val();
+                $(this).val(value.replace(/[^0-9]/g, '')); // Allow only digits
+            });
+
+            // Initial check for parent consent checkbox state when modal is shown
+            $("#privacyPopup").on('show.bs.modal', function() {
+                const isParentChecked = $(".checkMain").prop("checked");
+                $("#privacyPopup .checkAll").prop("checked", isParentChecked);
+                $("#privacyPopup .agreeContWrap input[type=checkbox]").prop("checked", isParentChecked);
+            });
+
+            // For sticky header, adjust scroll target offset if needed
+            // The 'smooth-scroll' library or custom JS should handle this with the -80 offset.
+        });
+    </script>
+  
